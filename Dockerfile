@@ -6,6 +6,6 @@ COPY . .
 RUN chmod +x mill
 RUN ./mill server.nativeImage
 
-FROM oracle/graalvm-ce:1.0.0-rc12
+FROM ubuntu:18.04
 COPY --from=builder ./out/server/nativeImage/dest/server /usr/local/bin/server
 ENTRYPOINT "/usr/local/bin/server"
