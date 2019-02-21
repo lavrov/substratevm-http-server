@@ -7,5 +7,5 @@ RUN chmod +x mill
 RUN ./mill server.nativeImage
 
 FROM oracle/graalvm-ce:1.0.0-rc12
-COPY --from=builder ./out/server/nativeImage/dest/server /usr/local/bin/scalaserv
-RUN "/usr/local/bin/scalaserv"
+COPY --from=builder ./out/server/nativeImage/dest/server /usr/local/bin/server
+ENTRYPOINT "/usr/local/bin/server"
