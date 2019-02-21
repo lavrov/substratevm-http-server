@@ -1,7 +1,7 @@
 import mill._, scalalib._
 
 object server extends ScalaModule with NativeImageModule {
-  def scalaVersion = "2.12.4"
+  def scalaVersion = "2.12.8"
   def ivyDeps = Dependencies.ivy
 }
 
@@ -20,6 +20,7 @@ trait NativeImageModule extends ScalaModule {
       %%(command,
         "--class-path", assemblyPath.toString,
         "-H:+ReportUnsupportedElementsAtRuntime",
+        "-R:+PrintGC",
         finalMainClass()
       )
     finalMainClass()
@@ -27,7 +28,7 @@ trait NativeImageModule extends ScalaModule {
 }
 
 object Dependencies {
-  val Http4sVersion = "0.19.0-M1"
+  val Http4sVersion = "0.20.0-M5"
   val LogbackVersion = "1.2.3"
 
   def ivy = Agg(
